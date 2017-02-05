@@ -2,14 +2,14 @@ import os
 from datetime import datetime
 # from flask_bootstrap import Bootstrap
 from flask import Flask, render_template,url_for,request,redirect,url_for,flash
-
+from forms import BookmarkForm
 
 app = Flask(__name__)
 
 bookmarks = []
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
-def store_bookmark(url):
+def store_bookmark(url, description):
     bookmarks.append(dict(
         url=url,
         user=("jimmy"),
@@ -17,20 +17,23 @@ def store_bookmark(url):
 
     )    
     )
-
+def new_bookmarks(num):
+    return sorted(bookmarks, key=lambda bm:['date'], reverse=True)[:num]
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', new_bookmarks=new_bookmarks(5))
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-    if request.method == 'POST':
-        url = request.form['url']
-        store_bookmark(url)
-        flash("Stored bookmark '{}'".format(url))
+    form = BookmarkForm()
+    if form.validate_on_submit():
+        url = form.url.data
+        description = form.description.data
+        store_bookmark(url, description)
+        flash("Stored  '{}'".format(description))
         return redirect(url_for('index'))
-    return render_template('add.html')
+    return render_template('add.html', form=form)
 
 
 @app.errorhandler(404)

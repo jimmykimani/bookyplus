@@ -5,9 +5,8 @@ from wtforms import ValidationError
 from flask_wtf.html5 import URLField
 
 
-class BookmarkForm(Form):
+class BookmarkForm(FlaskForm):
     url = URLField('url', validators=[Required(), url()])
-    description = StringField('Description')
+    description = StringField('Description', validators=[Required()] )
+    
 
-
- 
