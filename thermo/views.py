@@ -2,13 +2,26 @@
 from flask import Flask, render_template,url_for,request,redirect,url_for,flash
 from thermo import app, db,login_manager
 from models import User, Bookmark
-from flask_login import login_required,login_user
-from forms import BookmarkForm, LoginForm
-import models
+from flask_login import login_required,login_user, logout_user, current_user
+from forms import BookmarkForm, SigninForm, SignupForm
 
 @login_manager.user_loader
 def load_user(userid):
     return User.query.get(int(userid))
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = SignupForm()
+    if form.validate_on_submit():
+        user = User(email=form.email.data,
+                    username=form.username.data,
+                    password=form.password.data)
+        db.session.add(user)
+        db.session.commit()    
+        flash("You have successfully registered! You may now login.")
+        return redirect(url_for('login'))
+    return render_template('signup.html' , form=form)
 
 @app.route('/')
 @app.route('/index')
@@ -22,7 +35,7 @@ def add():
     if form.validate_on_submit():
         url = form.url.data
         description = form.description.data
-        bm = Bookmark(user=logged_in_user(),url=url, description=description)
+        bm = Bookmark(user=current_user,url=url, description=description)
         db.session.add(bm)
         db.session.commit()
         flash("Stored  '{}'".format(description))
@@ -37,15 +50,22 @@ def user(username):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    form = SigninForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user is not None:
+        if user is not None and user.check_password(form.password.data):
             login_user(user, form.remember_me.data)
             flash('Logged in successfully')
-            return redirect(request.args.get('next') or url_for('index'))
+            return redirect(request.args.get('next') or url_for('user'
+            ,username=user.username))
         flash('Invalid username or password.')
     return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)

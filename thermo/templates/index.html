@@ -6,6 +6,7 @@ Thermos | Welcome
 {% block content%}
                 <article>
                     <header>
+                         <h1>Hi, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %} please sign in {% endif %}!</h1>
                         <h1>Welcome to MY Bookmark</h1>
                         <p> My Bookmark is a simple web app that stores your bookmarks.</p>
                     </header>

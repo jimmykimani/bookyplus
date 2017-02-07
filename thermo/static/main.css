@@ -87,7 +87,10 @@ body {
 .title {
     color: white;
 }
-
+.title:hover {
+    text-decoration: none;
+    color:#FFB74D;
+}
 /* ==============
     MOBILE: Menu
    ============== */
