@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-import os
-from flask_script import Manager, Shell, prompt_bool
-from thermos import app, db
+import os 
+from flask_script import Manager, prompt_bool
+from thermo import app, db
+from thermo.models import User
 
 manager = Manager(app)
 
@@ -9,6 +10,9 @@ manager = Manager(app)
 @manager.command
 def initdb():
     db.create_all()
+    db.session.add(User(username="jimmy", email="jimmykkimani@gmail.com"))
+    db.session.add(User(username="joan", email="joan@gmail.com"))
+    db.session.commit()
     print 'intialized the database'
 
 @manager.command

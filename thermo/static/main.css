@@ -70,18 +70,18 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #0288D1
+    border-bottom: 20px solid #45ada8;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #0288D1
+    border-top: 20px solid#45ada8;
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #0288D1
+    background: #45ada8;
 }
 
 .title {
@@ -108,7 +108,7 @@ nav a {
     font-weight: bold;
 
     color: white;
-    background: #0288D1
+    background: #45ada8
 }
 
 nav a:hover,
