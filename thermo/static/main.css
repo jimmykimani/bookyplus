@@ -158,6 +158,19 @@ nav a:hover {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+/*link styling */
+a,
+a:visited{
+    color:#1e5373
+}
+a:hover, aside a:hover,aside a:visted:hover {
+
+    color: #D39447
+}
+
+
+
+
 .flash ul {
     margin: 0 0;
     background: #F44336;
@@ -202,6 +215,30 @@ nav a:hover {
     nav li:last-child a {
         margin-right: 0;
     }
+/*bookmark list style*/
+ul.bookmarks{
+    list-style:none none;
+    padding-left: 0;
+}
+ul.bookmarks li {
+padding-bottom: .5em;
+border-top:1px solid #7ea6bf;
+padding: 1em 0;
+}
+a.header h3 {
+    margin:0 0;
+}
+div.info{
+
+    font-size: .95em;
+    color: #666666
+}
+
+span.editlinks{
+    float:right;
+}
+
+
 
 /* ========================
     INTERMEDIATE: IE Fixes
