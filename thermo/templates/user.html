@@ -6,7 +6,7 @@ Thermos |Add a url
 {% block content %}
 <article>       
 <header>
-<h1> Bookmarks for {{ user.username}} </h1>
+<h1><i class="fa fa-bookmark" aria-hidden="true"></i>  Bookmarks for {{ user.username | capitalize}}  </h1>
 
         {% if user.bookmarks.count() > 0 %}
             {% with bookmarks =user.bookmarks %}

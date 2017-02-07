@@ -18,7 +18,7 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-            <a href="{{ url_for('index') }}"><h1 class="title"> My Bookmark</h1></a>
+            <a href="{{ url_for('index') }}"><h1 class="title"> <i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookmark</h1></a>
                 <nav>
                     <ul>
                         <li><a href="{{url_for('add')}}">Add url</a></li>     
@@ -66,7 +66,7 @@
 
         <div class="footer-container">
             <footer class="wrapper">
-                <h3>All rights reserves made with love by Jimmy kimani</h3>
+                <h3>All rights reserved made with <i class="fa fa-heart-o"> </i>  by Jimmy kimani</h3>
             </footer>
         </div>
         {{ moment.include_jquery() }}
