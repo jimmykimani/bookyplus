@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block title %}
-Thermos |Add a url
+Thermos | {{ title }}
 {% endblock %}
 
 {% block content %}
 <section>
      {{form.hidden_tag()}}
-    <h1>Add Url</h1>
+    <h1>{{ title }}</h1>
     <div class="col-md-4" method='post'>
     {{ wtf.quick_form(form) }}
 </div>
