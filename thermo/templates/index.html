@@ -6,9 +6,9 @@ Thermos | Welcome
 {% block content%}
                 <article>
                     <header>
-                      {% if current_user.is_authenticated %} <h1 class="Welcome"><i class="fa fa-user"> </i> Hi,{{ current_user.username|capitalize }}{% else %}<h2> Dont have an account?</h2> {% endif %}</h1>
+                      {% if current_user.is_authenticated %} <h1 class="Welcome"><i class="fa fa-user"> </i> Hi,{{ current_user.username|capitalize }}{% else %}<h3> Dont have an account? create one by signing up here</h3> {% endif %}</h1>
                       
-                        <p> My Bookmark is a simple web app that stores your bookmarks.</p>
+                        <p> Store your favorite bookmarks online<br> Available Anywhere</p>
                     </header>
                     <section>
                         <h2>Recently Added</h2>

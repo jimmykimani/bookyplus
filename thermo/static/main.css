@@ -163,11 +163,28 @@ a,
 a:visited{
     color:#1e5373
 }
-a:hover, aside a:hover,aside a:visted:hover {
+a:hover, aside a:hover,aside a:visited:hover {
 
     color: #D39447
 }
+aside a{
 
+color: #ffd6a3;
+}
+aside a:hover{
+    color: #f5bb73;
+    text-decoration: none;
+}
+aside a:visited{
+color: #E0E0E0;
+
+}
+.main aside h3, 
+footer h3,
+footer a,
+footer a:visited{
+    color: white
+}
 
 
 

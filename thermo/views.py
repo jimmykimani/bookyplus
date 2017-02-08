@@ -76,6 +76,10 @@ def edit_bookmark(bookmark_id):
         return redirect(url_for('user', username=current_user.username))
     return render_template('bookmark_form.html',form=form, title='Edit Bookmark')
 
+
+
+    
+
 @app.route('/tag/<name>')
 def tag(name):
     tag = Tag.query.filter_by(name=name).first_or_404()
