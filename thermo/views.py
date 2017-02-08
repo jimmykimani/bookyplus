@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template,url_for,request,redirect,url_for,flash,abort
 from thermo import app, db,login_manager
-from models import User, Bookmark
+from models import User, Bookmark,Tag
 from flask_login import login_required,login_user, logout_user, current_user
 from forms import BookmarkForm, SigninForm, SignupForm
 
@@ -35,7 +35,8 @@ def add():
     if form.validate_on_submit():
         url = form.url.data
         description = form.description.data
-        bm = Bookmark(user=current_user,url=url, description=description)
+        tags = form.tags.data
+        bm = Bookmark(user=current_user,url=url, description=description, tags=tags)
         db.session.add(bm)
         db.session.commit()
         flash("Stored  '{}'".format(description))
@@ -75,7 +76,10 @@ def edit_bookmark(bookmark_id):
         return redirect(url_for('user', username=current_user.username))
     return render_template('bookmark_form.html',form=form, title='Edit Bookmark')
 
-
+@app.route('/tag/<name>')
+def tag(name):
+    tag = Tag.query.filter_by(name=name).first_or_404()
+    return render_template('tag.html', tag=tag)
 
 
 @app.route('/logout')
@@ -92,6 +96,10 @@ def page_not_found(e):
 @app.errorhandler(500)
 def server_error(e):
     return render_template('500.html'),500
+
+@app.context_processor
+def inject_tags():
+    return dict(all_tags=Tag.all)
 
 
 if __name__=='__main__':

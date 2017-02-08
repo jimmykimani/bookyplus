@@ -13,7 +13,7 @@
                 <div class='info'>
                     <span class="tags">
                         {% if bookmark.tags %}
-                        {% for t in bookmarks._tags %}
+                        {% for t in bookmark._tags %}
                             <a href="#">{{ t }}</a>
                             {% endfor %}
                         {% else %} No tags.
@@ -26,7 +26,8 @@
                     {{ moment(bookmark.date).fromNow() }}.
                     {% if current_user == bookmark.user%}
                     <span class='editlinks'>
-                        <a href="{{ url_for('edit_bookmark',bookmark_id=bookmark.id) }}"><i class="fa fa-pencil"></i>edit</a>
+                        <a href="{{ url_for('edit_bookmark',bookmark_id=bookmark.id) }}"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ url_for('edit_bookmark',bookmark_id=bookmark.id) }}">  <i class="fa fa-trash"></i></a>
                     </span>
                     {% endif %}
 
