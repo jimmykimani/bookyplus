@@ -77,8 +77,23 @@ def edit_bookmark(bookmark_id):
     return render_template('bookmark_form.html',form=form, title='Edit Bookmark')
 
 
+@app.route('/delete/<int:bookmark_id>', methods=['GET','POST'])
+@login_required
+def delete_bookmark(bookmark_id):
+    bookmark = Bookmark.query.get_or_404(bookmark_id)
+    if current_user != bookmark.user:
+        abort(403)
+    if request.method == "POST":
+        db.session.delete(bookmark)
+        db.session.commit()
+        flash( 'Deleted successfully')
+        return redirect(url_for('user', username=current_user.username))
+    else: 
+        flash( 'Are you sure you want to delete the bookamrk')
+    return render_template('confirm_delete.html',bookmark=bookmark, nolinks=True)
 
-    
+
+
 
 @app.route('/tag/<name>')
 def tag(name):

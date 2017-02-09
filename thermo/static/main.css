@@ -58,6 +58,7 @@ textarea {
 
 body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
+    background-color: #f0f7e6;
 }
 
 .wrapper {
@@ -241,6 +242,18 @@ ul.bookmarks li {
 padding-bottom: .5em;
 border-top:1px solid #7ea6bf;
 padding: 1em 0;
+}
+
+.bookmark{
+    padding-bottom: .5em;
+    border-top: 1px solid #7ea6bf;
+    padding: 1em 0;
+}
+a.header{
+
+    color:#326786;
+    text-decoration: none;
+    display: block;
 }
 a.header h3 {
     margin:0 0;

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+My Bookmark |Delete bookmark
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1> confirm Delete<i class="fa fa-trash"></i> </h1>
+    {% include 'bookmark.html'%}
+
+    <form action '' method='post'>
+        <span style='color:red'>Are you sure?</span>
+        <br><br>
+        <a href="{{ url_for('user', username=current_user.username) }}">
+            <button type='button'> No,take me out of here</button>
+            </a>
+            <button type='submit'> yes please!</button>
+            </form>
+</section>
+{%endblock%}
+{% block sidebar%}
+{% endblock %}

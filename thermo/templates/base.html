@@ -6,10 +6,13 @@
         <title>{% block title %}{% endblock %} </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='1.svg') }}" type="image/x-icon">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://use.fontawesome.com/69f6af9e20.js"></script>
+        <link rel="import" href="static/everest.css" type="css">
         <link rel="stylesheet" href= '{{ url_for('static', filename='normalize.min.css')}}'>
         <link rel="stylesheet" href= '{{ url_for('static', filename='main.css')}}'>
+        <link rel="import" href= '{{ url_for('static', filename='everest.css')}}'>
         <!--<link rel="stylesheet" href="../static/css/main.css">-->
 
         <script src="../static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
