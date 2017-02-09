@@ -6,12 +6,12 @@
             <h3 class="description">
                 {{ bookmark.description|truncate(50, killwords=True) }}
                 </h3>
-                <span class='url'>
+                <span class='url fa fa-link'> </i>
                     {{ bookmark.url|truncate(25, killwords=True) }}
                  </span>   
                      </a>
                 <div class='info'>
-                    <span class="tags">
+                    <span class="tags fa fa-tags">
                         {% if bookmark.tags %}
                         {% for t in bookmark._tags %}
                             <a href="{{ url_for('tag', name=t)}}">{{ t }}</a>

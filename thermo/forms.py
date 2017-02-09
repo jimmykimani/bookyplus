@@ -6,8 +6,8 @@ from wtforms.fields.html5 import URLField
 from models import User
 
 class BookmarkForm(Form):
-    url = URLField('url', validators=[DataRequired(), url()])
-    description = StringField('Description' )
+    url = URLField('Enter url', validators=[DataRequired(), url()])
+    description = StringField('Enter Description :' )
     tags = StringField('Tags', validators=[Regexp(r'^[a-zA-Z0-9, ]*$', message=
     'Tags can only contain letters and numbers')])
     submit = SubmitField('Add')

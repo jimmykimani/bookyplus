@@ -6,12 +6,12 @@ My Bookmark | Welcome
 {% block content%}
                 <article>
                     <header>
-                      {% if current_user.is_authenticated %} <h1 class="Welcome"><i class="fa fa-user"> </i> Hi,{{ current_user.username|capitalize }}{% else %}<h3> Dont have an account? create one by signing up here</h3> {% endif %}</h1>
+                      {% if current_user.is_authenticated %} <h1 class="Welcome"><i class="fa fa-user"> </i> Hello, {{ current_user.username|capitalize }}{% else %}<h1 class="service-title text-center"> Not a member yet? Join now!</h1> {% endif %}</h1>
                       
-                        <p> Store your favorite bookmarks online<br> Available Anywhere</p>
+                       
                     </header>
                     <section>
-                        <h2>Recently Added</h2>
+                        <!--<h1 class="service-title text-center" >Recently Added</h1>-->
                         {% if new_bookmarks.count() > 0 %}
                             {% with bookmarks=new_bookmarks %}
                                 {% include 'bookmark_list.html' %}
