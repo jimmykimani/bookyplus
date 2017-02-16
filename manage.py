@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import os 
 from flask_script import Manager, prompt_bool
-from thermo import app, db
-from thermo.models import User, Bookmark, Tag
+from app import app, db
+from app.models import User, Bookmark, Tag
 from flask_migrate import Migrate,MigrateCommand
 
 manager = Manager(app)

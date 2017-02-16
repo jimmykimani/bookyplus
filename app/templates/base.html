@@ -10,10 +10,10 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="import" href="static/everest.css" type="css">
         <link rel="stylesheet" href= '{{ url_for('static', filename='normalize.min.css')}}'>
         <link rel="stylesheet" href= '{{ url_for('static', filename='main.css')}}'>
-        <link rel="import" href= '{{ url_for('static', filename='everest.css')}}'>
+        <!--<link type="text/css" rel="stylesheet" href= '{{ url_for('static', filename='materialize.css')}}'>-->
+    
         <!--<link rel="stylesheet" href="../static/css/main.css">-->
 
         <script src="../static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -22,16 +22,17 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-            <a href="{{ url_for('index') }}"><h1 class="title"> <i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookmark</h1></a>
+            <a href="{{ url_for('main.index') }}"><h1 class="title"> <i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookmark</h1></a>
                 <nav>
                     <ul>
-                        <li><a href="{{url_for('add')}}">Add url</a></li>     
+                        <li><a href="{{url_for('bookmark.add')}}">Add url</a></li>     
                         {% if current_user.is_authenticated%}
-                        <li> <a href="{{ url_for('user', username=current_user.username) }}">My Links</a></li>
-                        <li><a href="{{ url_for('logout')}}"> Sign out</a></li>
+                        <li> <a href="{{ url_for('main.user', username=current_user.username) }}">My Links</a></li>
+                        <li><a href="{{ url_for('auth.logout')}}"> Sign out</a></li>
                         {% else %}
-                        <li><a href="{{ url_for('signup')}}">Sign up </a> </i>
-                         <li><a href="{{ url_for('login')}}"> Sign In</a></li>
+                        <li><a href="{{ url_for('auth.signup')}}">Sign up </a> </i>
+                         <li><a href="{{ url_for('auth.login')}}"> Sign In</a></li>
+                         
                         
                         {% endif %}
                     </ul>
@@ -42,28 +43,29 @@
         <div class="main-container">
             <div class="main wrapper clearfix">
 
-
-                <article class="flash">
+                 <div class="row">
+                <article class="col-sm-8 col-sm-offset-3 flash">
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
                     <ul>
                        {% for message in messages %}
-                        <li> {{ message}}</li>
+                        <li class="text-center"> {{ message}}</li>
                         {% endfor %}
                     </ul> 
                     {% endif %}  
                     {% endwith %}
                 </article>
+                 </div>
 
                 {% block content %}
                 {% endblock %}
 
                 {% block sidebar %}
                  <aside>
-                    <h3><i class="fa fa-tags" aria-hidden="true"></i>  Tags</h3>
+                    <h3><i class="fa fa-tags" aria-hidden="true"></i> Tags</h3>
                      {% for t in all_tags() %}
 
-                     <a href= "{{  url_for('tag', name=t)}}">{{ t }}</a>
+                     <a href= "{{  url_for('bookmark.tag', name=t)}}">{{ t }}</a>
 
                      {% endfor %}
                 </aside>
@@ -74,10 +76,18 @@
 
         <div class="footer-container">
             <footer class="wrapper">
-                <h3>All rights reserved made with <i class="fa fa-heart-o"> </i>  by Jimmy kimani</h3>
+                <div id="social-box">
+        <div class="inner text-center">
+            <a target="_blank" href="http://github.com/jimmykimani" class="fa fa-github"></a>
+            <a target="_blank" href="http://twitter.com/jimkaks" class="fa fa-twitter"></a>
+            <a target="_blank" href="http://medium.com/@jimmykimani" class="fa fa-medium"></a>
+        </div>
+    </div>
+                <h3 class="footer-title text-center">All rights reserved made with <i class="fa fa-heart-o"> </i>  by Jimmy kimani | 2017</h3>
             </footer>
         </div>
-        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="../static/js/materialize.min.js"></script>
         {{ moment.include_jquery() }}
         {{ moment.include_moment() }}
 

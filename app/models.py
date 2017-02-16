@@ -1,8 +1,15 @@
 from datetime import datetime
-from thermo import db 
-from flask_login import UserMixin
+from . import db 
+from . import login_manager
+from flask_login import UserMixin,AnonymousUserMixin
 from sqlalchemy import desc
 from werkzeug.security import generate_password_hash, check_password_hash
+
+
+@login_manager.user_loader
+def load_user(userid):
+    return User.query.get(int(userid))
+
 
 
 tags = db.Table('bookmark_tag',
@@ -44,6 +51,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True)
     bookmarks = db.relationship('Bookmark', backref='user', lazy='dynamic')
     password_hash = db.Column(db.String)
+    
 
     @property
     def password(self):
@@ -76,6 +84,8 @@ class Tag(db.Model):
     @staticmethod
     def all():
         return Tag.query.all()
+
+          
 
     def __repr__(self):
         return self.name

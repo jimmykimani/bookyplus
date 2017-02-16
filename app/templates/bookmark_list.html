@@ -2,8 +2,9 @@
     {% for bookmark in bookmarks %} 
 
     <li>
-        <a class='header' href="{{ bookmark.url}}">
+        <a class='header' href="{{ bookmark.url}}" target="_blank">
             <h3 class="description">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
                 {{ bookmark.description|truncate(50, killwords=True) }}
                 </h3>
                 <span class='url fa fa-link'> </i>
@@ -14,20 +15,20 @@
                     <span class="tags fa fa-tags">
                         {% if bookmark.tags %}
                         {% for t in bookmark._tags %}
-                            <a href="{{ url_for('tag', name=t)}}">{{ t }}</a>
+                            <a href="{{ url_for('bookmark.tag', name=t)}}">{{ t }}</a>
                             {% endfor %}
                         {% else %} No tags.
                         {% endif %}
                     </span>
                     <br>
-                    Added by <a href="{{ url_for('user', username=bookmark.user.username) }}">
+                    Added by <a href="{{ url_for('main.user', username=bookmark.user.username) }}">
                     {{ bookmark.user.username}}
                     </a> <i class="fa fa-clock-o" aria-hidden="true"></i>
                     {{ moment(bookmark.date).fromNow() }}.
                     {% if current_user == bookmark.user%}
                     <span class='editlinks'>
-                        <a href="{{ url_for('edit_bookmark',bookmark_id=bookmark.id) }}"><i class="fa fa-pencil"></i></a>
-                        <a href="{{ url_for('delete_bookmark',bookmark_id=bookmark.id) }}">  <i class="fa fa-trash"></i></a>
+                        <a href="{{ url_for('bookmark.edit_bookmark',bookmark_id=bookmark.id) }}"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ url_for('bookmark.delete_bookmark',bookmark_id=bookmark.id) }}">  <i class="fa fa-trash"></i></a>
                     </span>
                     {% endif %}
 

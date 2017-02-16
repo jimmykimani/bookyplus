@@ -70,6 +70,7 @@ background-color: #f0f7e6;*/
     line-height: 26px;
     word-spacing: 2px;
     -webkit-font-smoothing: antialiased;
+    
 }
 
 .wrapper {
@@ -78,23 +79,33 @@ background-color: #f0f7e6;*/
 }
 
 .btn-default {
-    color: #eb7260 !important;
+    color: #ee6e73 !important;
     background-color: #fff;
-    border-color: #eb7260;
+    border-color: #ee6e73;
 }
 
 .btn-default:hover {
     color: #fff!important;
-    background-color: #FF5722;
-    border-color: #FF5722;
+    background-color: #ee6e73;
+    border-color: #ee6e73;
 }
 
 .form-control:focus {
-    border-color: #FF5722 !important;
+    border-color: #ee6e73!important;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #FF5722;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #FF5722;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #FF5722;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #ee6e73;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #ee6e73;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #ee6e73;;
+}
+.btn-default.focus, .btn-default:focus {
+    color: #ee6e73 !important;
+    background-color: #fff;
+    border-color: #ee6e73;
+}
+.btn-default.active, .btn-default:active {
+    color: #fff !important;
+    background-color: #ee6e73 !important;
+    border-color: #ee6e73;
 }
 h3{
     font-family: inherit;
@@ -103,21 +114,45 @@ h3{
     color: #555555;
 
 }
+h3.footer-title{
+    font-family: Tahoma, sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    color: #fff;
+
+}
 
 /* ===================
     ALL: Orange Theme
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #e85e49;
+    border-bottom: 20px solid #ee6e73
 }
 
 .footer-container {
     border-top: 20px solid#3c3c3c;
 }
+.social-box {
+    height: 75px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #3c3c3c;
+    padding: 50px;
+    font-size: 15px;
+}
+.inner a {
+    text-align: center;
+    display: inline-block;
+    font-size: xx-large;
+    padding: 0 15px 0 15px ;
+}
 
 .header-container {
-    background: #e85e49;
+    background: #ee6e73
 }
 
 .footer-container {
@@ -125,9 +160,8 @@ h3{
 }
 
 .main aside {
-    background: #e85e49;
-    border-top: 20px solid#e85e49;
-    ;
+    background: #ee6e73;
+    border-top: 20px solid #ee6e73;
 }
 
 .title {
@@ -136,7 +170,7 @@ h3{
 
 .title:hover {
     text-decoration: none;
-    color: #FFB74D;
+    color: #795548;
 }
 
 
@@ -158,7 +192,7 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     color: white;
-    background: #e85e49;
+    background:#ee6e73;
 }
 
 nav a:hover,
@@ -170,7 +204,15 @@ nav a:hover {
     text-decoration: none;
     color: #FFB74D;
 }
-
+/*error style*/
+.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
+    color: #92b06a;
+}
+.has-error .form-control {
+    border-color: #92b06a;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
 
 /* ==============
     MOBILE: Main
@@ -245,15 +287,19 @@ footer a:visited {
 
 .flash ul {
     margin: 0 0;
-    background: #F44336;
+    background: #92b06a;
     color: #fff;
     list-style: none;
     list-style-type: none;
 }
 
 .flash ul {
-    background: #F44336;
+    background: #92b06a;
     color: #fff;
+     padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 .flash {
@@ -261,7 +307,7 @@ footer a:visited {
 }
 
 h1.service-title {
-    font-family: latohairline, "Trebuchet MS", Tahoma, sans-serif;
+    font-family:Tahoma, sans-serif;
     font-size: 40px;
     font-weight: lighter;
     line-height: 58px;

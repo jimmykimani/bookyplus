@@ -3,33 +3,8 @@ from wtforms.fields import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired,url,Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
 from wtforms.fields.html5 import URLField
-from models import User
 
-class BookmarkForm(Form):
-    url = URLField('Enter url', validators=[DataRequired(), url()])
-    description = StringField('Enter Description :' )
-    tags = StringField('Tags', validators=[Regexp(r'^[a-zA-Z0-9, ]*$', message=
-    'Tags can only contain letters and numbers')])
-    submit = SubmitField('Add')
-
-
-    def validate(self):
-        if not self.url.data.startswith("http://") or\
-            self.url.data.startswith("https://"):
-            self.url.data = "" + self.url.data
-
-        if not Form.validate(self):
-            return False
-        if not self.description.data:
-            self.description.data = self.url.data
-        
-        stripped = [t.strip() for t in self.tags.data.split(',')]
-        not_empty = [tag for tag in stripped if tag]
-        tagset = set(not_empty)
-        self.tags.data = ",".join(tagset)
-
-        return True
-
+from ..models import db, User
 
 
 class SigninForm(Form):
@@ -59,4 +34,4 @@ class SignupForm(Form):
 
     def validate_username(self, username_field):
         if User.query.filter_by(username=username_field.data).first():
-            raise ValidationError('Username already in use.')
+            raise ValidationError('Username already in use.')    
