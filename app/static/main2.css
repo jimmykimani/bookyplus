@@ -63,7 +63,7 @@ body {
 background-color: #f0f7e6;*/
     width: 100%;
     min-height: 100%;
-    background: #FFFFFF;
+    background-color: rgba(158, 158, 158, 0.12);
     font-family: "Roboto","Helvetica",arial,sans-serif;
     color: #222222;
     font-weight: 400;
