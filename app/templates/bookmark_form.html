@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block title %}
 My Bookmark | {{ title }}
@@ -7,9 +7,9 @@ My Bookmark | {{ title }}
 {% block content %}
 <section>
      {{form.hidden_tag()}}
-    <h1> <i class="fa fa-pencil" aria-hidden="true"></i>   {{ title }} 
-</h1>
-    <div class="col-md-4" method='post'>
+    <h3> <i class="fa fa-pencil" aria-hidden="true"></i>   {{ title }} 
+</h3>
+    <div class="col s12 m12 l6 offset-l3" method='post'>
     {{ wtf.quick_form(form) }}
 </div>
        
@@ -18,3 +18,5 @@ My Bookmark | {{ title }}
 {%endblock%}
 {% block sidebar%}
 {%endblock%}
+ {% block parallax %}
+ {% endblock %}

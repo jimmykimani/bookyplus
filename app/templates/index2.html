@@ -1,12 +1,17 @@
-{% extends "base2.html" %}
+
+
+
+
+{% extends "base.html" %}
 {% block title %}
 My Bookmark | Welcome
 {% endblock%}
-{% block content %}
-               <article>
+
+{% block content%}
+                <article>
                     <header>
                       {% if current_user.is_authenticated %} <h1 class="Welcome"><i class="fa fa-user"> </i> Welcome, {{ current_user.username|capitalize }}!
-                     
+                      <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
                       {% else %}<h1 class="service-title text-center"> Not a member yet?  <a class='service-title'href="{{ url_for('auth.signup') }}">Join now!</h1> {% endif %}</a></h1>
                       
                        
@@ -22,6 +27,4 @@ My Bookmark | Welcome
                             {% endif %}
                     </section> 
                 </article>
-         {% endblock %}      
-    {% block parallax %}
     {% endblock %}

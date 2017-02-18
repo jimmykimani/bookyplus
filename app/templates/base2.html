@@ -1,0 +1,188 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href= '{{ url_for('static', filename='materialize.css')}}'>
+      <link rel="stylesheet" href= '{{ url_for('static', filename='main2.css')}}'>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+     <!--<link type="text/css" rel="stylesheet" href="css/main.css"/>-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!--<script type="text/javascript" src="../static/js/materialize.min.js"><-->
+      
+      <script src= '{{ url_for('static', filename='materialize.js')}}'></script>
+      <script src= '{{ url_for('static', filename='main.js')}}'></script>
+
+      <!-- to Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <div class="header-container">
+      
+<!-- Dropdown Structure -->
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">My Profile</a></li>
+  <li><a href="#!">Change password</a></li>
+  <li class="divider"></li>
+  <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
+</ul>
+ <div class="navbar-fixed">
+<nav>
+  <div class="nav-wrapper">
+    
+    {% if current_user.is_authenticated %} <a href="{{url_for('main.index')}}" class="brand-logo"> 
+      {% else %}<a href="{{url_for('main.home')}}" class="brand-logo"> {% endif %}
+      <i class="tiny material-icons left">turned_in</i>My Bookmark</a>
+     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+        <li><a href="{{url_for('bookmark.add')}}"><i class="material-icons left">add</i>Add url</a></li>
+        {% if current_user.is_authenticated%}
+        <li><a href="{{ url_for('main.user', username=current_user.username) }}"><i class="material-icons left">view_list</i>View Bookmarks</a></li>
+        <li><a href="badges.html"><i class="material-icons left">search</i></a></li>
+        {% else %}
+         <li><a class="waves-effect waves-light btn" href="{{url_for('auth.signup')}}"><i class="material-icons left">person_add</i>Get Started</a></li>
+      <!--<li><a href="{{url_for('auth.signup')}}"><i class="material-icons left">person_add</i>Get Started</a></li>-->
+       {% endif %}
+      <!-- Dropdown Trigger -->
+      {% if current_user.is_authenticated%}
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">face</i>Hi,{{ current_user.username|capitalize }}!<i class="material-icons right">more_vert</i></a></li>
+      {% else %}
+       <li><a href="{{url_for('auth.login')}}"><i class="material-icons left">input</i>Log In</a></li>
+        {% endif %}
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+            <li><a href="signup.html">Add link</a></li>
+      <li><a href="badges.html">My links</a></li>
+    </ul>
+  </div>
+</nav>
+ </div>
+   <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+    <ul>
+      
+   
+      {% if current_user.is_authenticated%}
+      <li><a class="btn-floating red" href="{{url_for('main.index')}}"><i  class="material-icons">home</i></a></li>
+      <li><a class="btn-floating yellow darken-1"href="{{url_for('auth.logout')}}"><i class="material-icons">keyboard_tab</i></a></li>
+      <li><a class="btn-floating green"href="{{ url_for('main.user', username=current_user.username) }}"><i class="material-icons">library_books</i></a></li>
+      {% else %}
+       <li><a class="btn-floating red" href="{{url_for('main.home')}}"><i  class="material-icons">home</i></a></li>
+       <li><a class="btn-floating yellow darken-1"href="{{url_for('auth.login')}}"><i class="material-icons">input</i></a></li>
+       <li><a class="btn-floating green"href="{{url_for('auth.signup')}}"><i class="material-icons">person_add</i></a></li>
+        {% endif %}
+      <li><a class="btn-floating blue" href="{{url_for('bookmark.add')}}"><i class="material-icons">library_add</i></a></li>
+    </ul>
+  </div>
+
+
+{% block parallax %}
+  <div class="parallax-container">
+               <div class="caption">
+            <h1>Welcome to Booky<span>Plus</span></h1>
+               </div>
+               
+               <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
+    <div class="parallax"><img src="../static/bg.jpg"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <div class="added">
+        <h2>Meet your new Bookmark App</h2>
+      <p class="grey-text text-darken-3 lighten-3">Store and share all your favorite Bookmarks in one place.You can also view what's new at a glance and visit and browse through tags.</p>
+    </div>
+  </div>
+  </div>
+{% endblock %}
+
+<div class="main-container">
+            <div class="main wrapper clearfix">
+
+                 <div class="row">
+                   
+                <article class="col s12 m12 l6 offset-l3 flash">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                       {% for message in messages %}
+                        <li class="center-align"> {{ message}}</li>
+                        {% endfor %}
+                    </ul> 
+                    {% endif %}  
+                    {% endwith %}
+                </article>
+                
+                 </div>
+
+                 {% block content %}
+                {% endblock %}
+ 
+  {% block sidebar %}
+  
+                 <aside>
+                    <h3><i class="fa fa-tags" aria-hidden="true"></i> Tags</h3>
+                     {% for t in all_tags() %}
+
+                     <a href= "{{  url_for('bookmark.tag', name=t)}}">{{ t }}</a>
+
+                     {% endfor %}
+                </aside>
+                {% endblock  %}
+
+                </div> <!-- #main -->
+        </div> <!-- #main-container -->
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                                <div id="social-box">
+        <div class="inner text-center">
+            <a target="_blank" href="http://github.com/jimmykimani" class="fa fa-github"></a>
+            <a target="_blank" href="http://twitter.com/jimkaks" class="fa fa-twitter"></a>
+            <a target="_blank" href="http://medium.com/@jimmykimani" class="fa fa-medium"></a>
+            <a target="_blank" href="http://medium.com/@jimmykimani" class="fa fa-github-alt "></a>
+        </div>
+    </div>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Add url</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">View Bookmarks</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Tags</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Logout</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+          Made with <i class="fa fa-heart-o"></i> by Jimmy Kimani
+          <div class="col s12">
+            <a class="grey-text text-lighten-4 right"  href="#!">© 2017 Copyright </a></div>
+            </div>
+          </div>
+        </footer>
+
+
+
+
+
+
+ <script>
+$( document ).ready(function(){})
+    $(".button-collapse").sideNav();
+        
+</script>
+
+
+      
+    </body>
+  </html>

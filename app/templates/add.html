@@ -1,24 +1,57 @@
-{% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base2.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
 {% block title %}
-My Bookmark |Add a url
+My Bookmark | Log in
 {% endblock %}
 
+{% block content %}
+            
+              
+<div class="row">
+              <div class="col s12 m12 l6 offset-l3">
+                <div class="card-panel">
+                  <h4 class="header2 center-align">Add url</h4>
+                  <div class="row">
+                   <form method="post" class="form" role="form" id='SignForm'>
+                        {{ form.hidden_tag() }}
+                      <div class="row">
+                        <div class="input-field col s12">
+                         <i class="material-icons prefix">link</i>
+                           <input type="text" class="validate" id="url" name="url" placeholder="Enter url">
+                          <label for="url">Enter your url</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix">description</i>
+                         <input type="text" class="validate" id="description" name="description" placeholder="Enter description">
+                          <label for="description">Description</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix">loyalty</i>
+         <input type="password" class="validate" id="tags" name="tags" placeholder="tags">
+          <label for="tags">Tags</label>
+                      </div>
 
-{% block content%}
-
-    <div class="row">
-          {{form.hidden_tag()}}
-        <div class="col-md-6 col-md-offset-3">
-            <div class="row">
-<h1 class="service-title text-center"> Add url</h1>
-   <hr>
-                <div class="col-sm-8 col-sm-offset-2">
-                    {{ wtf.quick_form(form) }}
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <button class="btn red waves-effect waves-light left" type="submit">Submit
+                              <i class="material-icons left">send</i>
+                            </button>
+                    
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-            </div>
-            </div>
-    </div>
-{%endblock%}
-{% block sidebar%}
-{%endblock%}
+              </div>
+</div>
+
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+ {% block parallax %}
+ {% endblock %}

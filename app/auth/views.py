@@ -6,7 +6,7 @@ from flask_login import login_required,login_user, logout_user, current_user
 from forms import SigninForm, SignupForm
 from .. import db
 from .import auth
-from ..models import User
+from ..models import Bookmark,User, Tag
 
 
 
@@ -48,8 +48,8 @@ def login():
 @auth.route('/logout')
 def logout():
     logout_user()
-    flash("You've been Logged out!")
-    return redirect(url_for('main.index'))
+    # flash("You've been Logged out!")
+    return render_template('base2.html',new_bookmarks=Bookmark.newest(5))
 
 
 
