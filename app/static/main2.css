@@ -269,6 +269,19 @@ a:visited {
     color: #92b06a;
 }*/
 
+    /*header, main, wrapper,footer {
+      padding-left: 300px;
+    }*/
+
+    /*@media only screen and (max-width : 992px) {*/
+      /*header, main, footer {
+        padding-left: 0;
+      }
+    }*/
+          
+a {
+    color: #4CAF50;
+}
 a:hover,
 aside a:hover,
 aside a:visited:hover {
@@ -417,6 +430,24 @@ h1.service-title {
       font-family: "Roboto", "Helvetica", arial, sans-serif;
       white-space: pre-wrap;
   }
+  .single-features {
+  overflow: hidden;
+  padding-top: 65px;
+  padding-bottom: 40px;
+}
+
+.single-features .col-sm-6 {
+  margin-top: 50px;
+}
+
+.single-features:last-child {
+  padding-bottom: 95px;
+  padding-top: 0;
+}
+
+.single-features h2{
+  margin-bottom: 15px;
+}
   text-center{
 
       text-align: center;
@@ -426,23 +457,7 @@ h1.service-title {
      border-bottom: 1px solid #8bab60;
      box-shadow: 0 1px 0 0 #8bab60;
    }
-/*nav {
-    color: #fff;
-    background-color: #795548;
-    width: 100%;
-    height: 56px;
-    line-height: 56px;
-}*/
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media only screen and (min-width: 480px) {
-    /* ====================
-    INTERMEDIATE: Menu
-   ==================== */
-  .bookmark  nav a {
+     .bookmark  nav a {
         float: left;
         width: 27%;
         margin: 0 1.7%;
@@ -467,6 +482,23 @@ h1.service-title {
         margin: 0 0.7%;
     }
 }
+/*nav {
+    color: #fff;
+    background-color: #795548;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+}*/
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+    /* ====================
+    INTERMEDIATE: Menu
+   ==================== */
+
 
 @media only screen and (min-width: 768px) {
     /* ====================
@@ -497,7 +529,7 @@ h1.service-title {
     }
     .main aside {
         float: right;
-        width: 28%;
+        width: 33%;
     }
 }
 

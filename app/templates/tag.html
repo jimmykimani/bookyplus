@@ -4,9 +4,8 @@ My Bookmark | Bookmarks tagged {{ tag }}
 {% endblock %}
 
 {% block content %}
-<article>       
-<header>
-<h1><i class="fa fa-bookmark" aria-hidden="true"></i> Bookmarks tagged in {{ tag }}  </h1>
+
+<h3><i class="fa fa-bookmark" aria-hidden="true"></i> Bookmarks tagged in {{ tag }}  </h3>
 
         {% if tag.bookmarks.count() > 0 %}
             {% with bookmarks = tag.bookmarks %}
@@ -19,7 +18,7 @@ My Bookmark | Bookmarks tagged {{ tag }}
 
         {% endif %}
 
-</header>
+
 </article>
 {% endblock %}
  {% block parallax %}

@@ -15,6 +15,7 @@ def home():
 
 
 @main.route('/index')
+@login_required
 def index():
     return render_template('index.html', new_bookmarks=Bookmark.newest(5))
 

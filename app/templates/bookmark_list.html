@@ -1,14 +1,15 @@
        <div class="row">
         <div class="col s12 m12 l12">
-  <div class="card">
-      <div class="card-stacked">
+  <!--<div class="card">
+      <div class="card-stacked">-->
+          <div class="card-panel hoverable">
 <ul class='bookmarks card-content'>
     {% for bookmark in bookmarks %} 
 
     <li>
         <a class='header' href="{{ bookmark.url}}" target="_blank">
             <h3 class="description">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <i class="material-icons left">label_outline</i>
                 {{ bookmark.description|truncate(50, killwords=True) }}
                 </h3>
                 <span class='url fa fa-link'> </i>
@@ -31,8 +32,8 @@
                     {{ moment(bookmark.date).fromNow() }}.
                     {% if current_user == bookmark.user%}
                     <span class='editlinks'>
-                        <a href="{{ url_for('bookmark.edit_bookmark',bookmark_id=bookmark.id) }}"><i class="fa fa-pencil"></i></a>
-                        <a href="{{ url_for('bookmark.delete_bookmark',bookmark_id=bookmark.id) }}">  <i class="fa fa-trash"></i></a>
+                        <a href="{{ url_for('bookmark.edit_bookmark',bookmark_id=bookmark.id) }}"><i class="material-icons left">mode_edit</i>
+                        <a href="{{ url_for('bookmark.delete_bookmark',bookmark_id=bookmark.id) }}">  <i class="material-icons left">delete</i>
                     </span>
                     {% endif %}
 

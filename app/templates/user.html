@@ -5,7 +5,7 @@ My Bookmark | Users
 
 {% block content %}
 <article>       
-<header>
+
 <h1><i class="fa fa-bookmark" aria-hidden="true"></i>  Bookmarks for {{ user.username | capitalize}}  </h1>
 
         {% if user.bookmarks.count() > 0 %}
@@ -19,7 +19,7 @@ My Bookmark | Users
 
         {% endif %}
 
-</header>
+
 </article>
 {% endblock %}
  {% block parallax %}

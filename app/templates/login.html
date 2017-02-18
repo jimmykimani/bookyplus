@@ -9,16 +9,17 @@ My Bookmark | Log in
               
 <div class="row">
               <div class="col s12 m12 l6 offset-l3">
-                <div class="card-panel">
+                <div class="card-panel hoverable">
                   <h4 class="header2 center-align">Log in</h4>
                   <div class="row">
-                   <form method="post" class="form" role="form" id='SignForm'>
+                   <form method="post" class="form right-alert" role="form" id='SignForm'>
                         {{ form.hidden_tag() }}
                       <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field right-alert col s12">
+                          
                          <i class="material-icons prefix">account_circle</i>
                            <input type="text" class="validate" id="username" name="username" placeholder="Username">
-                          <label for="username"data-error="wrong" data-success="right">Username</label>
+                          <label for="username"data-error="wrong" data-success='good'>Username</label>
                     
                         </div>
                       </div>
