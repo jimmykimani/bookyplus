@@ -113,7 +113,7 @@ h3{
     font-family: inherit;
     font-weight: 500;
     line-height: 1.1;
-    color: #555555;
+    color: #333;
     font-size: x-large;
 
 }
@@ -175,10 +175,9 @@ h3.footer-title{
 }
 
 .main aside {
-    background: #ee6e73;
-    border-top: 20px solid #ee6e73;
+    background: #1976D2;
+    border-top: 20px solid #1976d2;
 }
-
 .title {
     color: white;
 }
@@ -278,7 +277,7 @@ aside a:visited:hover {
 }
 
 aside a {
-    color: #ffd6a3;
+    color: #fff;
 }
 
 aside a:hover {
@@ -378,9 +377,9 @@ h1.service-title {
   }
   .caption h1 {
       color: #fff;
-      font-size: 60px;
+      font-size: 30px;
       margin-bottom: 30px;
-      font-family: Raleway;
+      font-family: "Roboto", "Helvetica", arial, sans-serif;
       font-weight: lighter;
   }
   .caption {
@@ -396,7 +395,7 @@ h1.service-title {
       font-weight: 300;
       color: #fff;
   }
-  .added h2 {
+  .added h3 {
       font-size: 28px;
       font-weight: 100;
       line-height: 48px;

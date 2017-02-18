@@ -12,8 +12,6 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <!--<script type="text/javascript" src="../static/js/materialize.min.js"><-->
       
-      <script src= '{{ url_for('static', filename='materialize.js')}}'></script>
-      <script src= '{{ url_for('static', filename='main.js')}}'></script>
 
       <!-- to Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -30,13 +28,13 @@
   <li class="divider"></li>
   <li><a href="{{ url_for('auth.logout')}}">Logout</a></li>
 </ul>
- <div class="navbar-fixed">
+ <!--<div class="navbar-fixed">-->
 <nav>
   <div class="nav-wrapper">
     
     {% if current_user.is_authenticated %} <a href="{{url_for('main.index')}}" class="brand-logo"> 
       {% else %}<a href="{{url_for('main.home')}}" class="brand-logo"> {% endif %}
-      <i class="tiny material-icons left">turned_in</i>My Bookmark</a>
+      <i class="tiny material-icons left">turned_in</i>Booky+</a>
      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
         <li><a href="{{url_for('bookmark.add')}}"><i class="material-icons left">add</i>Add url</a></li>
@@ -55,8 +53,16 @@
         {% endif %}
     </ul>
     <ul class="side-nav" id="mobile-demo">
-            <li><a href="signup.html">Add link</a></li>
-      <li><a href="badges.html">My links</a></li>
+ <li><a href="{{url_for('bookmark.add')}}"><i class="material-icons left">add</i>Add url</a></li>
+        {% if current_user.is_authenticated%}
+        <li><a href="{{ url_for('main.user', username=current_user.username) }}"><i class="material-icons left">view_list</i>View Bookmarks</a></li>
+        <li><a href="badges.html"><i class="material-icons left">search</i>search</a></li>
+        <li><a href="{{ url_for('auth.logout')}}"><i class="material-icons left">keyboard_tab</i>Logout</a></li>
+        {% else %}
+         <li><a class="waves-effect waves-light btn" href="{{url_for('auth.signup')}}"><i class="material-icons left">person_add</i>Get Started</a></li>
+     <li><a href="{{url_for('auth.login')}}"><i class="material-icons left">input</i>Log In</a></li>
+      <!--<li><a href="{{url_for('auth.signup')}}"><i class="material-icons left">person_add</i>Get Started</a></li>-->
+       {% endif %}</li>
     </ul>
   </div>
 </nav>
@@ -92,11 +98,13 @@
     <div class="parallax"><img src="../static/bg.jpg"></div>
   </div>
   <div class="section white">
-    <div class="row container">
+    <div class="container">
+    <div class="row">
       <div class="added">
-        <h2>Meet your new Bookmark App</h2>
+        <h3 class="center-align">Meet your new Bookmark App</h3>
       <p class="grey-text text-darken-3 lighten-3">Store and share all your favorite Bookmarks in one place.You can also view what's new at a glance and visit and browse through tags.</p>
     </div>
+  </div>
   </div>
   </div>
 {% endblock %}
@@ -142,7 +150,7 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">Footer Content</h5>
-                                <div id="social-box">
+                <div id="social-box">
         <div class="inner text-center">
             <a target="_blank" href="http://github.com/jimmykimani" class="fa fa-github"></a>
             <a target="_blank" href="http://twitter.com/jimkaks" class="fa fa-twitter"></a>
@@ -164,9 +172,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-          Made with <i class="fa fa-heart-o"></i> by Jimmy Kimani
-          <div class="col s12">
-            <a class="grey-text text-lighten-4 right"  href="#!">© 2017 Copyright </a></div>
+<h3 class="footer-title center-align">All rights reserved made with <i class="fa fa-heart-o"> </i>  by Jimmy kimani | 2017</h3>
             </div>
           </div>
         </footer>
@@ -175,12 +181,17 @@
 
 
 
-
+<!--
  <script>
-$( document ).ready(function(){})
-    $(".button-collapse").sideNav();
-        
-</script>
+  $('.button-collapse').sideNav({
+    menuWidth: 300, // Default is 300
+    edge: 'left', // Choose the horizontal origin
+    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: true // Choose whether you can drag to open on touch screens
+  });
+</script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+      <script src= '{{ url_for('static', filename='main.js')}}'></script>
 
 
       
