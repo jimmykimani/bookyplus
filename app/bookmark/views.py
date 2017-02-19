@@ -3,7 +3,7 @@ from flask_login import login_required,login_user, logout_user, current_user
 from . import bookmark
 from forms import BookmarkForm
 from ..models import User, Bookmark,Tag
-from ..import db,app
+from ..import db
 from .. import models
 
 
@@ -57,10 +57,8 @@ def delete_bookmark(bookmark_id):
     return render_template('confirm_delete.html',bookmark=bookmark, nolinks=True)
 
 @bookmark.route('/tag/<name>')
+@login_required
 def tag(name):
     tag = Tag.query.filter_by(name=name).first_or_404()
     return render_template('tag.html', tag=tag)
 
-@app.context_processor
-def inject_tags():
-    return dict(all_tags=Tag.all)  
