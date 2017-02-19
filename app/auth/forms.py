@@ -34,4 +34,24 @@ class SignupForm(Form):
 
     def validate_username(self, username_field):
         if User.query.filter_by(username=username_field.data).first():
-            raise ValidationError('Username already in use.')    
+            raise ValidationError('Username already in use.') 
+
+
+class ChangeUsername(Form):
+    username = StringField('New Username', validators=[
+        DataRequired(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
+                                          'Usernames must have only letters, '
+                                          'numbers, dots or underscores')])
+    password=PasswordField('Password', validators=[DataRequired()])
+    submit=SubmitField("Update Username")
+
+    def validate_email(self, field):
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('Username already registered.')
+
+class ChangePasswordForm(Form):
+    old_password = PasswordField('Old password', validators=[DataRequired()])
+    password = PasswordField('New password', validators=[
+        DataRequired(), EqualTo('password2', message='Passwords must match')])
+    password2 = PasswordField('Confirm new password', validators=[DataRequired()])
+    submit = SubmitField('Update Password')
