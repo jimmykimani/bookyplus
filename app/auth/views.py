@@ -44,7 +44,7 @@ def login():
 def change_username():
     form=ChangeUsername()
     if form.validate_on_submit():
-        if current_user.verify_password(form.password.data):
+        if current_user.check_password(form.password.data):
             current_user.username=form.username.data
             db.session.add(current_user)
             flash('Your username has been updated')
@@ -59,7 +59,7 @@ def change_username():
 def change_password():
     form = ChangePasswordForm()
     if form.validate_on_submit():
-        if current_user.verify_password(form.old_password.data):
+        if current_user.check_password(form.old_password.data):
             current_user.password = form.password.data
             db.session.add(current_user)
             flash('Your password has been updated.')

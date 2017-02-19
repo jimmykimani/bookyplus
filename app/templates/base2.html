@@ -98,8 +98,8 @@
 	    <li><div class="divider"></div></li>
 		<li><a class="subheader">My Account</a></li>
 	   
-		<li><a href="#"><i class="material-icons left">person</i>Change username</a>
-		<li><a href="#"><i class="material-icons left">lock_open</i>Change password</a>
+		<li><a href="{{ url_for('auth.change_username')}}"><i class="material-icons left">person</i>Change username</a>
+		<li><a href="{{ url_for('auth.change_password')}}"><i class="material-icons left">lock_open</i>Change password</a>
         <li><a href="{{ url_for('auth.logout')}}"><i class="material-icons left">keyboard_tab</i>Logout</a></li>
 			 <li><a href="{{url_for('auth.login')}}"><i class="material-icons left">share</i>Share Booky+</a></li>
 			 <li><a href="{{url_for('auth.login')}}"><i class="material-icons left">help</i>Stuck?</a></li>

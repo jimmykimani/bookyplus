@@ -1,0 +1,49 @@
+{% extends "base2.html" %}
+<!--{% import "bootstrap/wtf.html" as wtf %}-->
+{% block title %}
+My Bookmark | Log in
+{% endblock %}
+
+{% block content %}
+            
+              
+<div class="row">
+  <div class="col s12 m12 l6 offset-l3">
+    <div class="card-panel hoverable">
+      <h4 class="header2 center-align">Change Username</h4>
+      <div class="row">
+        <form method="post" class="form right-alert" role="form" id='SignForm'>
+          {{ form.hidden_tag() }}
+          <div class="row">
+            <div class="input-field right-alert col s12">
+              <i class="material-icons prefix">account_circle</i>
+              <input type="text" class="validate" id="username" name="username" placeholder="New Username">
+              <label for="username" data-error="wrong" data-success='good'>New Username</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">lock</i>
+              <input type="password" class="validate" id="password" name="password" placeholder="Password">
+              <label for="password">Password</label>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn red waves-effect waves-light left" type="submit">Change username
+                              <i class="material-icons left">lock_open</i>
+                              
+                            </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+ {% block parallax %}
+ {% endblock %}
