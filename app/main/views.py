@@ -11,7 +11,7 @@ from ..models import Bookmark,User, Tag
 @main.route('/')
 @main.route('/home')
 def home():
-    return render_template('base2.html', new_bookmarks=Bookmark.newest(5))    
+    return render_template('base.html', new_bookmarks=Bookmark.newest(5))    
 
 
 @main.route('/index')

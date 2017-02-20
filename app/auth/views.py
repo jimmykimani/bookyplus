@@ -73,7 +73,7 @@ def change_password():
 def logout():
     logout_user()
     # flash("You've been Logged out!")
-    return render_template('base2.html',new_bookmarks=Bookmark.newest(5))
+    return render_template('base.html',new_bookmarks=Bookmark.newest(5))
 
 
 
