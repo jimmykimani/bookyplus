@@ -6,6 +6,7 @@
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href= '{{ url_for('static', filename='materialize.css')}}'>
+      <link type="text/css" rel="stylesheet" href= '{{ url_for('static', filename='animate.min.css')}}'>
       <link rel="stylesheet" href= '{{ url_for('static', filename='main2.css')}}'>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
      <!--<link type="text/css" rel="stylesheet" href="css/main.css"/>-->
@@ -138,12 +139,13 @@
 <!--Start: Home parallax image-->
 {% block parallax %}
   <div class="parallax-container">
-               <div class="caption">
-                 <!--welcome message-->
-            <h1>Welcome to Booky<span>Plus</span></h1>
-               </div>
+            <div class="caption">
+            <h1 class="animated fadeInLeftBig">Welcome to <span>Booky+</span></h1>
+            <p class="animated fadeInRightBig">Store - Share - Available - Fast</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="{{url_for('auth.signup')}}">Join now</a>
+          </div>
                
-               <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
+               <a id="tohash" href="#intro"><i class="fa fa-angle-down"></i></a>
     <div class="parallax"><img src="../static/bg.jpg"></div>
   </div>
   
@@ -153,7 +155,7 @@
     <div class="row">
       <div class="added">
         <!--about bookyplus-->
-        <h3 class="center-align">Meet your new Bookmark App</h3>
+        <h3 id='intro'class="center-align">Meet your new Bookmark App</h3>
       <p class="grey-text text-darken-3 lighten-3">Store and share all your favorite Bookmarks in one place.You can also view what's new at a glance and visit and browse through tags.</p>
     </div>
   </div>
@@ -162,6 +164,7 @@
   
   <!--/End (paralax)-->
 {% endblock %}
+
 
 <div class="main-container">
             <div class="main wrapper clearfix">
@@ -189,8 +192,7 @@
  <!--tags for auth users-->
   {% block sidebar %}
 {% if current_user.is_authenticated%}
-                      <aside style="
-                        margin-top: 100px;">
+                      <aside style="margin-top: 60px;">
                       <h3><i class="fa fa-tags" aria-hidden="true"></i> Tags</h3>
                      {% for t in all_tags() %}
 
@@ -201,17 +203,17 @@
                 {%else%}
 				            </div> 
                 </div> 
-  <div class="parallax-container">
+  <!--<div class="parallax-container">
     <div class="parallax"><img src="../static/6.png"></div>
-  </div>
+  </div>-->
   <div class="section white">
     <div class="row container">
-      <h2 class="header">Parallax</h2>
+      <h2 class="header ">Parallax</h2>
       <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
     </div>
   </div>
     <div class="parallax-container">
-    <div class="parallax"><img src="../static/booky.jpg"></div>
+    <div class="parallax"><img src="../static/6.png"></div>
   </div>
 
 {% endif %}
@@ -225,7 +227,7 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
+                <h5 class="white-text">I am Social!</h5>
                 <div id="social-box">
         <div class="inner text-center">
             <a target="_blank" href="http://github.com/jimmykimani" class="fa fa-github"></a>

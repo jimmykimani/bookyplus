@@ -5,7 +5,7 @@ My Bookmark | Welcome
 {% block content %}
                <article>
                    
-                      {% if current_user.is_authenticated %} <h1 class="left-align"><i class="fa fa-user"> </i> Welcome, {{ current_user.username|capitalize }}!
+                      {% if current_user.is_authenticated %} <h1 class="left-align animated fadeInDown"><i class="fa fa-user"> </i> Welcome, {{ current_user.username|capitalize }}!
                      
                       {% else %}<h1 class="service-title text-center"> Not a member yet?  <a class='service-title'href="{{ url_for('auth.signup') }}">Join now!</h1> {% endif %}</a></h1>
                       
